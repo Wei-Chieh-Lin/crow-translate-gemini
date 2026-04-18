@@ -561,6 +561,8 @@ QByteArray AppSettings::engineApiKey(QOnlineTranslator::Engine engine) const
     switch (engine) {
     case QOnlineTranslator::LibreTranslate:
         return m_settings->value(QStringLiteral("Translation/LibreTranslateApiKey"), defaultEngineApiKey(engine)).toByteArray();
+    case QOnlineTranslator::Gemini:
+        return m_settings->value(QStringLiteral("Translation/GeminiApiKey"), defaultEngineApiKey(engine)).toByteArray();
     default:
         Q_UNREACHABLE();
     }
@@ -572,6 +574,9 @@ void AppSettings::setEngineApiKey(QOnlineTranslator::Engine engine, const QByteA
     case QOnlineTranslator::LibreTranslate:
         m_settings->setValue(QStringLiteral("Translation/LibreTranslateApiKey"), apiKey);
         break;
+    case QOnlineTranslator::Gemini:
+        m_settings->setValue(QStringLiteral("Translation/GeminiApiKey"), apiKey);
+        break;
     default:
         Q_UNREACHABLE();
     }
@@ -581,10 +586,26 @@ QByteArray AppSettings::defaultEngineApiKey(QOnlineTranslator::Engine engine)
 {
     switch (engine) {
     case QOnlineTranslator::LibreTranslate:
+    case QOnlineTranslator::Gemini:
         return {};
     default:
         Q_UNREACHABLE();
     }
+}
+
+QString AppSettings::geminiModel() const
+{
+    return m_settings->value(QStringLiteral("Translation/GeminiModel"), defaultGeminiModel()).toString();
+}
+
+void AppSettings::setGeminiModel(const QString &model)
+{
+    m_settings->setValue(QStringLiteral("Translation/GeminiModel"), model);
+}
+
+QString AppSettings::defaultGeminiModel()
+{
+    return QStringLiteral("gemini-2.0-flash");
 }
 
 QOnlineTts::Voice AppSettings::voice(QOnlineTranslator::Engine engine) const
@@ -594,6 +615,7 @@ QOnlineTts::Voice AppSettings::voice(QOnlineTranslator::Engine engine) const
     case QOnlineTranslator::Bing:
     case QOnlineTranslator::LibreTranslate:
     case QOnlineTranslator::Lingva:
+    case QOnlineTranslator::Gemini:
         return QOnlineTts::NoVoice;
     case QOnlineTranslator::Yandex:
         return m_settings->value(QStringLiteral("TTS/YandexVoice"), defaultVoice(engine)).value<QOnlineTts::Voice>();
@@ -621,6 +643,7 @@ QOnlineTts::Voice AppSettings::defaultVoice(QOnlineTranslator::Engine engine)
     case QOnlineTranslator::Bing:
     case QOnlineTranslator::LibreTranslate:
     case QOnlineTranslator::Lingva:
+    case QOnlineTranslator::Gemini:
         return QOnlineTts::NoVoice;
     case QOnlineTranslator::Yandex:
         return QOnlineTts::Zahar;
@@ -636,6 +659,7 @@ QOnlineTts::Emotion AppSettings::emotion(QOnlineTranslator::Engine engine) const
     case QOnlineTranslator::Bing:
     case QOnlineTranslator::LibreTranslate:
     case QOnlineTranslator::Lingva:
+    case QOnlineTranslator::Gemini:
         return QOnlineTts::NoEmotion;
     case QOnlineTranslator::Yandex:
         return m_settings->value(QStringLiteral("TTS/YandexEmotion"), defaultEmotion(engine)).value<QOnlineTts::Emotion>();
@@ -663,6 +687,7 @@ QOnlineTts::Emotion AppSettings::defaultEmotion(QOnlineTranslator::Engine engine
     case QOnlineTranslator::Bing:
     case QOnlineTranslator::LibreTranslate:
     case QOnlineTranslator::Lingva:
+    case QOnlineTranslator::Gemini:
         return QOnlineTts::NoEmotion;
     case QOnlineTranslator::Yandex:
         return QOnlineTts::Neutral;
@@ -685,6 +710,7 @@ QMap<QOnlineTranslator::Language, QLocale::Country> AppSettings::regions(QOnline
     case QOnlineTranslator::Yandex:
     case QOnlineTranslator::LibreTranslate:
     case QOnlineTranslator::Lingva:
+    case QOnlineTranslator::Gemini:
         return {};
     default:
         Q_UNREACHABLE();
@@ -715,6 +741,7 @@ QMap<QOnlineTranslator::Language, QLocale::Country> AppSettings::defaultRegions(
     case QOnlineTranslator::Yandex:
     case QOnlineTranslator::LibreTranslate:
     case QOnlineTranslator::Lingva:
+    case QOnlineTranslator::Gemini:
         return {};
     default:
         Q_UNREACHABLE();

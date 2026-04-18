@@ -238,6 +238,15 @@
              <normaloff>:/icons/engines/lingva.svg</normaloff>:/icons/engines/lingva.svg</iconset>
            </property>
           </item>
+          <item>
+           <property name="text">
+            <string notr="true">Gemini</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../data/icons/engines/engines.qrc">
+             <normaloff>:/icons/engines/gemini.svg</normaloff>:/icons/engines/gemini.svg</iconset>
+           </property>
+          </item>
          </widget>
         </item>
         <item>

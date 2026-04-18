@@ -870,6 +870,76 @@
              </widget>
             </item>
             <item>
+             <widget class="QGroupBox" name="geminiGroupBox">
+              <property name="title">
+               <string notr="true">Gemini</string>
+              </property>
+              <layout class="QFormLayout" name="formLayout_12">
+               <item row="0" column="0">
+                <widget class="QLabel" name="geminiApiKeyLabel">
+                 <property name="text">
+                  <string>API key:</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QLineEdit" name="geminiApiKeyLineEdit">
+                 <property name="toolTip">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Google AI Studio API key. Get one at &lt;a href=&quot;https://aistudio.google.com/apikey&quot;&gt;https://aistudio.google.com/apikey&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                 <property name="echoMode">
+                  <enum>QLineEdit::Password</enum>
+                 </property>
+                 <property name="placeholderText">
+                  <string notr="true">AIza...</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="geminiModelLabel">
+                 <property name="text">
+                  <string>Model:</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QComboBox" name="geminiModelComboBox">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="toolTip">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Gemini model to use. Flash models are faster and cheaper; Pro offers higher quality.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                 <property name="editable">
+                  <bool>true</bool>
+                 </property>
+                 <property name="currentText">
+                  <string notr="true">gemini-2.0-flash</string>
+                 </property>
+                 <item>
+                  <property name="text">
+                   <string notr="true">gemini-2.0-flash</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string notr="true">gemini-2.5-flash</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string notr="true">gemini-2.5-pro</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
              <spacer name="translationPageSpacer">
               <property name="orientation">
                <enum>Qt::Vertical</enum>

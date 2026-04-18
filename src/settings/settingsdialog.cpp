@@ -254,6 +254,8 @@ void SettingsDialog::accept()
     settings.setEngineUrl(QOnlineTranslator::LibreTranslate, ui->libreTranslateUrlComboBox->currentText());
     settings.setEngineApiKey(QOnlineTranslator::LibreTranslate, ui->libreTranslateApiKeyTextEdit->text().toUtf8());
     settings.setEngineUrl(QOnlineTranslator::Lingva, ui->lingvaUrlComboBox->currentText());
+    settings.setEngineApiKey(QOnlineTranslator::Gemini, ui->geminiApiKeyLineEdit->text().toUtf8());
+    settings.setGeminiModel(ui->geminiModelComboBox->currentText());
 
     // OCR
     settings.setConvertLineBreaks(ui->convertLineBreaksCheckBox->isChecked());
@@ -565,6 +567,8 @@ void SettingsDialog::restoreDefaults()
     ui->libreTranslateUrlComboBox->setCurrentText(AppSettings::defaultEngineUrl(QOnlineTranslator::LibreTranslate));
     ui->libreTranslateApiKeyTextEdit->setText(AppSettings::defaultEngineApiKey(QOnlineTranslator::LibreTranslate));
     ui->lingvaUrlComboBox->setCurrentText(AppSettings::defaultEngineUrl(QOnlineTranslator::Lingva));
+    ui->geminiApiKeyLineEdit->setText(AppSettings::defaultEngineApiKey(QOnlineTranslator::Gemini));
+    ui->geminiModelComboBox->setCurrentText(AppSettings::defaultGeminiModel());
 
     // OCR
     ui->convertLineBreaksCheckBox->setChecked(AppSettings::defaultConvertLineBreaks());
@@ -676,6 +680,8 @@ void SettingsDialog::loadSettings()
     ui->libreTranslateUrlComboBox->setCurrentText(settings.engineUrl(QOnlineTranslator::LibreTranslate));
     ui->libreTranslateApiKeyTextEdit->setText(settings.engineApiKey(QOnlineTranslator::LibreTranslate));
     ui->lingvaUrlComboBox->setCurrentText(settings.engineUrl(QOnlineTranslator::Lingva));
+    ui->geminiApiKeyLineEdit->setText(QString::fromUtf8(settings.engineApiKey(QOnlineTranslator::Gemini)));
+    ui->geminiModelComboBox->setCurrentText(settings.geminiModel());
 
     // OCR
     ui->convertLineBreaksCheckBox->setChecked(settings.isConvertLineBreaks());

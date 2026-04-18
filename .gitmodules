@@ -6,10 +6,6 @@
 	path = src/third-party/qtaskbarcontrol
 	url = https://github.com/crow-translate/QTaskbarControl.git
 	ignore = dirty
-[submodule "src/qonlinetranslator"]
-	path = src/qonlinetranslator
-	url = https://github.com/crow-translate/QOnlineTranslator.git
-	ignore = dirty
 [submodule "src/qgittag"]
 	path = src/qgittag
 	url = https://github.com/crow-translate/QGitTag.git
